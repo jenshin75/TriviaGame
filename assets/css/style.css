@@ -1,0 +1,24 @@
+.container {
+  background-image: url("../images/trivia.jpg");
+  width: 525px;
+  height: 150px;
+  padding: 5px;
+}
+
+#start {
+  background-color: fuchsia;
+  border: 1px solid fuchsia;
+  font-size: 40px;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  margin-left: 200px;
+}
+
+#time-left {
+  font-size: 25px;
+  width: 300px;
+  padding: 10px;
+  height: 25px;
+  
+}
