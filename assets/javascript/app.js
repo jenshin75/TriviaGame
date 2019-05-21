@@ -3,18 +3,19 @@
 //********************************* */
 
 $("#start").on("click", function () {
-  fiveSeconds;
-  tenSeconds;
-  timeUp;
+  //fiveSeconds;
+  //tenSeconds;
+ // timeUp;
 });
 
 //  after 05 seconds, execute the fiveSeconds function
 //  after 10 seconds, execute the tenSeconds function
 //  after 15 seconds, execute the timeUp function
 
-setTimeout(fiveSeconds, 1000 * 5);
-setTimeout(tenSeconds, 1000 * 10);
-setTimeout(timeUp, 1000 * 15);
+//setTimeout(fiveSeconds, 1000 * 5);
+//setTimeout(tenSeconds, 1000 * 10);
+//setTimeout(timeUp, 1000 * 15);
+//setInterval(countdown, 1000)   //clearinterval
 
 function fiveSeconds() {
   // in the element with an id of time-left add an h2 saying About 10 Seconds Left!
@@ -45,17 +46,17 @@ function timeUp() {
 var questions = [
   {
     question: "What is the longest river in the United States?",
-    options: {Colorado_River, Missouri_River, Rio_Grande_River},
+    options: ["Colorado_River", "Missouri_River", "Rio_Grande_River"],
     correctAnswer: 2
   },
   {
     question: "Death Valley is located in what U.S. state?",
-    options: {Nevada, Texas, California},
+    options: ["Nevada", "Texas", "California"],
     correctAnswer: 3
   },
   {
     question: "Pierre is the capital of what U.S. state?",
-    options: {South_Dakota, Montana, Rhode_Island} ,
+    options: ["South_Dakota", "Montana", "Rhode_Island"] ,
     correctAnswer: 1
   }
 ];
@@ -64,10 +65,64 @@ var userChoice = "";
 var correct = 0;
 var incorrect = 0;
 var unanswered = 0;
+var timer;
+var counter = 30;
 
-function showQuestions(questions, container) {
 
-  for (let i = 0; i < question.length; i++) {
+
+function showQuestions() {
+
+  for (let i = 0; i < questions.length; i++) {
+
+      $("#trivia").append("<h2>" + questions[i].question + "</h2>")
+
+          for (let index = 0; index <  questions[i].options.length; index++) {
+         
+                $("#trivia").append('<input type="radio" question="' + i + '"  res="' + index + '">' + questions[i].options[index])
+  
+
+           
+          }
+              
+   }
+
+       $("#trivia").append('<br><br><button id="submit">Submit</button>')
+
+     timer = setInterval(countdown, 1000)   // if we have not a variable we cant clear the  interval
+ 
+
+
+   $("#submit").on("click", function(){
+
+      var alldata = $("#trivia").children("input:checked") 
+      clearInterval(timer)
+      // stop the timer
+
+      for (i=0;i<alldata.length; i++){
+        var q = $(alldata[i]).attr("question")
+        var r =  $(alldata[i]).attr("res")
+        if (parseInt(questions[q].correctAnswer) === parseInt(r)){
+          correct++
+        }
+        else{
+          incorrect++
+        }
+      }
+      console.log("cooorect:", correct)
+      console.log("incorrect: ", incorrect)
+     
+
+   })
+  }
+
+       //set the interval
+
+
+    /// create the quetsions area in the html
+
+    // usign jquery to create element ith the info and append to the html
+    // <h2>  with quetsion
+    // the radio button
     // display show questions and radio button choices ??????????????????????????
 
     // <label class="container">One
@@ -78,9 +133,16 @@ function showQuestions(questions, container) {
     // ??????????????????????????????????
 
     // return userChoice;
-  }
-}
 
+
+  function countdown(){
+    counter--
+    $("#time-left").text(counter)
+    if (counter === 0){
+      clearInterval(timer)
+      alert("time out")
+    }
+  }
   //***************************************** */
   //* CHECK IF USER ANSWERS = CORRECT ANSWERS */
   //***************************************** */
@@ -115,3 +177,4 @@ function reset() {
 }
 
 reset()
+showQuestions()
