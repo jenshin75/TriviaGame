@@ -45,17 +45,17 @@ function timeUp() {
 var questions = [
   {
     question: "What is the longest river in the United States?",
-    options: { Colorado_River, Missouri_River, Rio_Grande_River },
+    options: {Colorado_River, Missouri_River, Rio_Grande_River},
     correctAnswer: 2
   },
   {
     question: "Death Valley is located in what U.S. state?",
-    options: { Nevada, Texas, California },
+    options: {Nevada, Texas, California},
     correctAnswer: 3
   },
   {
     question: "Pierre is the capital of what U.S. state?",
-    options: { South_Dakota, Montana, Rhode_Island },
+    options: {South_Dakota, Montana, Rhode_Island} ,
     correctAnswer: 1
   }
 ];
@@ -98,3 +98,20 @@ function showQuestions(questions, container) {
         unanswered++;
     }
 }
+
+$("#results").on("click", function () {
+
+$("#correct").text(correct);
+$("#incorrect").text(incorrect);
+$("#unanswered").text(unanswered);
+
+});
+
+function reset() {
+//reset your counter display here
+
+//reset your counter to 0
+
+}
+
+reset()
