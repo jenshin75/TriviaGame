@@ -58,7 +58,7 @@ var questions = [
     options: { South_Dakota, Montana, Rhode_Island },
     correctAnswer: 1
   }
-]
+];
 
 var userChoice = "";
 var correct = 0;
@@ -67,49 +67,34 @@ var unanswered = 0;
 
 function showQuestions(questions, container) {
 
-for (let i = 0; i < question.length; i++) {
- //??????????????? show questions and radio button choices ??????????????????????????
-   
-// <label class="container">One
-//   <input type="radio" checked="checked" name="radio">
-//   <span class="checkmark"></span>
-// </label>
+  for (let i = 0; i < question.length; i++) {
+    // display show questions and radio button choices ??????????????????????????
 
-// ??????????????????????????????????
+    // <label class="container">One
+    //   <input type="radio" checked="checked" name="radio">
+    //   <span class="checkmark"></span>
+    // </label>
 
+    // ??????????????????????????????????
 
+    // return userChoice;
   }
-  
 }
 
+  //***************************************** */
+  //* CHECK IF USER ANSWERS = CORRECT ANSWERS */
+  //***************************************** */
 
-
-
-
-return userChoice;
-
-}
-
-//***************************************** */
-//* CHECK IF USER ANSWERS = CORRECT ANSWERS */
-//***************************************** */
-
-for (let i = 0; i < questions.length; i++) {
-  if (userChoice === correctAnswer) {
-    correct++;
+  function answerCheck(answers, container) {
+    for (let i = 0; i < questions.length; i++) {
+      if (userChoice === correctAnswer) {
+        correct++;
+      }
+      else if
+        (userChoice !== correctAnswer) {
+        incorrect++;
+      }
+      else
+        unanswered++;
     }
-  else if 
-  (userChoice !== correctAnswer) {
-    incorrect++;
-  }
-  else
-    unanswered++;
 }
-
-
-
-
-
-
-
-
