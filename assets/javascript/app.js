@@ -1,8 +1,6 @@
-//* ONCLICK FUNCTION TO START TIMER
 $("#start").on("click", function(){
 });
 
-//DISPLAY QUESTIONS, OPTIONS AND STORE USER CHOICES
 var questions = [
   {
     question: "Q1: What is the longest river in the United States?",
@@ -12,13 +10,13 @@ var questions = [
   },
   {
     question: "Q2: Death Valley is located in what U.S. state?",
-    options: ["Nevada", "Texas", "California"],
+    options: ["Nevada", "Texas", "California", "Utah"],
     correctAnswer: 3,
     url: "https://giphy.com/gifs/61S9lWAlkZg4837zOu"
   },
   {
-    question: "Q3: Pierre is the capital of what U.S. state?",
-    options: ["South Dakota", "Montana", "Rhode Island"],
+    question: "Q3: Pierre is the capital of what U. S. state?",
+    options: ["South Dakota", "Montana", "Rhode Island", "New Mexico"],
     correctAnswer: 1,
     url: "https://giphy.com/gifs/20NhnmyD3QYMrfnTgr"
   }
@@ -43,8 +41,21 @@ urlImage.attr("src", questions[index].url)
 
 question.append(urlImage);
   $("#trivia").append(question)
-  
 
+
+
+
+
+
+
+}
+
+showQuestions()
+
+
+
+//***********************SET INTERVAL 
+//***********************SET TIME OUT
 
 
 //   //*show trivia questions and append them
@@ -106,6 +117,4 @@ question.append(urlImage);
 //     showQuestions()
 //   })
 
-}
 
-showQuestions()
