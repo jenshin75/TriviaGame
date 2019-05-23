@@ -1,18 +1,12 @@
-//********************************* */
-//* ONCLICK FUNCTION TO START TIMER */
-//********************************* */
-
-$("#start").on("click", function () {
+//* ONCLICK FUNCTION TO START TIMER
+$("#start").on("click", function(){
 });
 
-//*************************************************** */
-//* DISPLAY QUESTIONS, OPTIONS AND STORE USER CHOICES */
-//*************************************************** */
-
+//DISPLAY QUESTIONS, OPTIONS AND STORE USER CHOICES
 var questions = [
   {
     question: "Q1: What is the longest river in the United States?",
-    options: ["Colorado_River", "Missouri_River", "Rio_Grande_River"],
+    options: ["Colorado River", "Missouri River", "Rio Grande River"],
     correctAnswer: 2
   },
   {
@@ -22,7 +16,7 @@ var questions = [
   },
   {
     question: "Q3: Pierre is the capital of what U.S. state?",
-    options: ["South_Dakota", "Montana", "Rhode_Island"] ,
+    options: ["South Dakota", "Montana", "Rhode Island"],
     correctAnswer: 1
   }
 ];
@@ -35,80 +29,64 @@ var timer;
 var counter = 99;
 
 function showQuestions() {
-  for (let i = 0; i < questions.length; i++) {
-  $("#trivia").append("<h2>" + questions[i].question + "</h2>")
 
-  for (let index = 0; index <  questions[i].options.length; index++) {
-  $("#trivia").append('<input type="radio" question="' + i + '"  res="' + index + '">' + questions[i].options[index])
-}  
-}
+  //*show trivia questions and append them
+  for (let i = 0; i < questions.length; i++) {
+    $("#trivia").append("<h2>" + questions[i].question + "</h2>")
+
+    //*show answer choices and append them using radio buttons
+    for (let index = 0; index < questions[i].options.length; index++) {
+      $("#trivia").append('<input type="radio" name="' + i + '"  res="' + index + '">' + questions[i].options[index])
+    }
+  }
+  //*dynamically create/append submit button
   $("#trivia").append('<br><br><button id="submit">Submit</button>')
   timer = setInterval(countdown, 1000)   // if we do not have a variable, we cannot clear the interval
 
-  $("#submit").on("click", function() {
-  var alldata = $("#trivia").children("input:checked")    
-  clearInterval(timer)  
-  // stop the timer
- 
-  for (i=0;i<alldata.length; i++){
-    var q = $(alldata[i]).attr("question")
-    var r =  $(alldata[i]).attr("res") 
-    if (parseInt(questions[q].correctAnswer) === parseInt(r)){
-      correct++
-      }
-    else 
-    // if (parseInt(questions[q].correctAnswer) !== parseInt(r)){
-      incorrect++
-      // }
-    // else {
-    //   unanswered++
-    // }
-  }
-      console.log("correct: ", correct)
-      console.log("incorrect: ", incorrect)
-      console.log("unanswered: ", unanswered)
-})
-}
+  //when submit button is clicked, check "input" selected
+  $("#submit").on("click", function () {
+    var alldata = $("#trivia").children("input:checked")
+    clearInterval(timer);
+    // stop the timer
 
-  function countdown() {
-    counter--;
-    $("#time-left").text("Time Remaining: " + counter)
-   
-    if (counter === 0){   
-      clearInterval(timer)
-      alert("time out")
+    //store user's choices for each question in "alldata"
+    for (i = 0; i < alldata.length; i++) {
+      var q = $(alldata[i]).attr("name")
+      var r = $(alldata[i]).attr("res")
+      //split/parse user's question/correct answer to correct question/answer
+      if (parseInt(questions[q].correctAnswer) === parseInt(r)) {
+        correct++
+      }
+      else if (parseInt(questions[q].correctAnswer) !== parseInt(r)) {
+        incorrect++
+      }
+      else {
+        unanswered++
+      }
+
+      console.log("correct: ", correct);
+      console.log("incorrect: ", incorrect);
+      console.log("unanswered: ", unanswered);
     }
-  }
 
-  //***************************************** */
-  //* CHECK IF USER ANSWERS = CORRECT ANSWERS */
-  //***************************************** */
+    //count down time left
+    function countdown() {
+      counter--;
+      $("#time-left").text("Time Remaining: " + counter)
 
-  // function answerCheck(answers, container) {
-  function answerCheck() {
-    for (let i = 0; i < questions.length; i++) {
-      if (userChoice === correctAnswer) {       
-        correct++;
+      if (counter === 0) {
+        clearInterval(timer)
+        alert("time out")
       }
-      else if     
-        (userChoice !== correctAnswer) {
-        incorrect++;
-      }
-      else    
-        unanswered++;
-      } 
+    }
+
+    function reset() {
+      //reset your counter display here
+      //reset your counter to 0
+    }
+
+    reset()
+    showQuestions()
+  })
 }
 
-$("#submit").on("click", function () { 
-  $("#correct").text("Correct: " + correct);
-  $("#incorrect").text("Incorrect: " + incorrect);
-  // $("#unanswered").text("Unanswered: " + unanswered);
-});
-
-function reset() {
-//reset your counter display here
-//reset your counter to 0
-}
-
-reset()
-showQuestions()
