@@ -1,23 +1,45 @@
+body {
+  background-image: url("../images/background.jpg");
+}
+
 .container {
-  background-image: url("../images/trivia.jpg");
-  width: 525px;
-  height: 150px;
+  background: skyblue;
+  width: 900px;
+  height: 600px;
+  margin: 25px auto;
+
+}
+
+#main {
+  width: 500px;
+  height: 75px;
   padding: 5px;
+  font-size: 40px;
+  text-align: center;
+  margin-left: 200px;
+}
+
+#trivia {
+  font-size: 18px;
+  margin-left: 150px;
+  line-height: 40px;
 }
 
 #start, #submit {
-  background-color: fuchsia;
-  border: 1px solid fuchsia;
+  background-color: plum;
+  border: 1px solid plum;
   font-size: 25px;
+  margin-left: 200px;
   width: 150px;
   height: 50px;
   text-align: center;
+  margin-left: 350px;
 }
 
 #time-left, #results {
   font-size: 25px;
   width: 400px;
-  height: 150px;
+  height: 50px;
   padding: 10px;  
-  margin-left: 200px;
+  margin-left: 300px;
 }
