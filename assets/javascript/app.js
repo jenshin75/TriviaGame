@@ -24,8 +24,8 @@ var correct = 0;
 var incorrect = 0;
 var unanswered = 0;
 var timer;
-var counter = 9999;
 var index = 0;
+var counter = 30;
 
 // upon clicking start, count down will begin
 $("#start").on("click", function() 
@@ -58,7 +58,13 @@ function showQuestions() {
     //split/parse user's question/correct answer to correct question/answer
     if (parseInt(questions[q].correctAnswer) === parseInt(r)) 
     {
-      correct++
+      correct++;
+    
+      var urlImage = $("<img>");
+    urlImage.attr("src", questions[index].url)
+    question.append(urlImage);
+    // $("#trivia").append(question)
+    
     }
     else if (parseInt(questions[q].correctAnswer) !== parseInt(r)) 
     {
@@ -73,6 +79,10 @@ function showQuestions() {
     console.log("incorrect: ", incorrect);
     console.log("unanswered: ", unanswered);
 
+    $("#correct").text("Correct: " + correct);
+    $("#incorrect").text("Incorrect: " + incorrect);
+    $("#unanswered").text("Unanswered: " + unanswered);
+
   }
 
   //*dynamically create/append submit button
@@ -83,33 +93,6 @@ function showQuestions() {
 $("#submit").on("click", function () {
   var alldata = $("#trivia").children("input:checked")
   clearInterval(timer);
-// }
-
-  // stop the timer
-
-  // //store user's choices for each question in "alldata"
-  // for (i = 0; i < alldata.length; i++) {
-  //   var q = $(alldata[i]).attr("name")
-  //   var r = $(alldata[i]).attr("res")
-
-  //   //split/parse user's question/correct answer to correct question/answer
-  //   if (parseInt(questions[q].correctAnswer) === parseInt(r)) {
-  //     correct++
-
-  //   }
-  //   else if (parseInt(questions[q].correctAnswer) !== parseInt(r)) {
-  //     incorrect++
-  //   }
-  //   else {
-  //     unanswered++
-  //   }
-
-  //   console.log("correct: ", correct);
-  //   console.log("incorrect: ", incorrect);
-  //   console.log("unanswered: ", unanswered);
-    //     }  
-
-  // }
 
 function countdown() {
       counter--;
@@ -131,6 +114,15 @@ function countdown() {
       }
 }
 
-// function reset() 
+function reset() {
+  correct = 0;
+  incorrect = 0;
+  unanswered = 0;
+  timer = 0;
+  counter = 0; 
+  index = 0
+  countdown = 0;
+}
+
 // reset your counter display here
 // reset your counter to 0
