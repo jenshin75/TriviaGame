@@ -30,9 +30,9 @@ var alldata = [];
 
 // upon clicking start, count down will begin
 $("#start").on("click", function () {
+  $("#start").hide();
   timer = setInterval(countdown, 1000)
   showQuestions()
-
 })
 
 function showQuestions () {
@@ -54,6 +54,7 @@ function showQuestions () {
   $("#trivia").append('<br><br><button id="submit">Submit</button>')
 
   $("#submit").on("click", function () {
+    $("#submit").hide();
     alldata = $("#trivia").children("input:checked")
     clearInterval(timer);
     showResults();
