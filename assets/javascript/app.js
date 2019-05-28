@@ -111,12 +111,11 @@ function showResults () {
   
   unanswered = questions.length - correct - incorrect
 
-
   console.log("correct: ", correct);
   console.log("incorrect: ", incorrect);
   console.log("unanswered: ", unanswered);
 
-  $("#correct").text("Correct: " + correct);
+  $("#correct").html("Correct: " + correct);
   $("#incorrect").text("Incorrect: " + incorrect);
   $("#unanswered").text("Unanswered: " + unanswered);
 }
