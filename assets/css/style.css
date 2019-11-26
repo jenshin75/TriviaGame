@@ -1,12 +1,17 @@
-body {
+/* body {
   background-image: url("../images/background.jpg");
-}
+} */
 
+h1 {
+  font: 50px;
+}
 .container {
   background: skyblue;
   width: 900px;
-  height: 700px;
-  margin: 25px auto;
+  height: 650px;
+  /* margin: 25px auto; */
+  text-align: center;
+  font-size: 50px;
 }
 
 #main {
@@ -19,11 +24,12 @@ body {
 }
 
 #trivia {
-  font-size: 16px;
-  width: 700px;
+  font-size: 20px;
+  /* width: 700px; */
   /* margin-left: 100px; */
   text-align: center;
   line-height: 40px;
+  /* color: white; */
 }
 
 #start {
@@ -48,9 +54,11 @@ body {
 
 #time-left, #results {
   font-size: 25px;
-  width: 400px;
-  height: 50px;
-  padding: 10px;  
-  margin-left: 325px;
+  color: red;
+  /* width: 400px;
+  height: 50px; */
+  padding: 15px;  
+  /* margin-left: 325px; */
+  text-align: center;
 }
 
